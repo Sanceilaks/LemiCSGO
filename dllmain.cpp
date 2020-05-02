@@ -4,7 +4,7 @@
 
 void HackStart()
 {
-
+    MessageBoxA(NULL, "Hui", "Nahui", NULL);
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
@@ -17,6 +17,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
         CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)HackStart, NULL, NULL, NULL);
+        break;
     case DLL_PROCESS_DETACH:
         break;
     }
