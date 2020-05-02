@@ -1,2 +1,2 @@
 # LemiCSGO
-My first csgo hack sdk)
+My first public csgo hack sdk)
