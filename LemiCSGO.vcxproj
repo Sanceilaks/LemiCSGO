@@ -97,7 +97,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>D:\VSP\LemiCSGO\MinHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,7 +115,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>D:\VSP\LemiCSGO\MinHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,7 +137,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>D:\VSP\LemiCSGO\MinHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,7 +159,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>D:\VSP\LemiCSGO\MinHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;libMinHook-x86-v141-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -170,28 +170,52 @@
     <ClInclude Include="ClientClass.h" />
     <ClInclude Include="ClientEntityList.h" />
     <ClInclude Include="ClientMode.h" />
+    <ClInclude Include="CPanel.h" />
     <ClInclude Include="CreateMoveHook.h" />
+    <ClInclude Include="csgodraw.h" />
+    <ClInclude Include="CSurface.h" />
+    <ClInclude Include="EndScane.h" />
     <ClInclude Include="fnv.h" />
     <ClInclude Include="HookManager.h" />
     <ClInclude Include="HooksInclude.h" />
     <ClInclude Include="IInclude.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\stb_rect_pack.h" />
+    <ClInclude Include="imgui\stb_textedit.h" />
+    <ClInclude Include="imgui\stb_truetype.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="Netvars.h" />
+    <ClInclude Include="PaintTreverseHook.h" />
     <ClInclude Include="recv.h" />
     <ClInclude Include="RecvProps.h" />
+    <ClInclude Include="Render.h" />
+    <ClInclude Include="ResetHook.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="TextColor.h" />
     <ClInclude Include="UserCmd.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HackCore.h" />
     <ClInclude Include="top.h" />
     <ClInclude Include="vector.h" />
+    <ClInclude Include="vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BannyHop.cpp" />
     <ClCompile Include="CreateMoveHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="EndScane.cpp" />
     <ClCompile Include="HackCore.cpp" />
     <ClCompile Include="HookManager.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
     <ClCompile Include="Netvars.cpp" />
+    <ClCompile Include="PaintTreverseHook.cpp" />
+    <ClCompile Include="Render.cpp" />
+    <ClCompile Include="ResetHook.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

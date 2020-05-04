@@ -5,3 +5,5 @@
 #include "CBaseClient.h"
 #include "CEngineClient.h"
 #include "ClientEntityList.h"
+#include "CPanel.h"
+#include "CSurface.h"

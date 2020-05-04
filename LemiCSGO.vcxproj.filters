@@ -52,6 +52,15 @@
     <Filter Include="Файлы заголовков\Core\csgo\Classes">
       <UniqueIdentifier>{3617c505-db6b-4025-837a-a287bc308f9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Core\tools\draw">
+      <UniqueIdentifier>{bc1b36b8-e47d-4470-8836-9688838baad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\imgui">
+      <UniqueIdentifier>{6a9bbe4c-0bb2-4ce8-8fd3-684a7a495dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Hacks\UI">
+      <UniqueIdentifier>{35a06103-6c66-413f-a18e-f0e45b3e1cfa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HackCore.h">
@@ -65,9 +74,6 @@
     </ClInclude>
     <ClInclude Include="top.h">
       <Filter>Файлы заголовков\Core\tools</Filter>
-    </ClInclude>
-    <ClInclude Include="UserCmd.h">
-      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IInclude.h">
       <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
@@ -117,6 +123,60 @@
     <ClInclude Include="fnv.h">
       <Filter>Файлы заголовков\Core\tools\misc</Filter>
     </ClInclude>
+    <ClInclude Include="UserCmd.h">
+      <Filter>Файлы заголовков\Core\csgo\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CPanel.h">
+      <Filter>Файлы заголовков\Core\csgo\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PaintTreverseHook.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="CSurface.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="vertex.h">
+      <Filter>Файлы заголовков\Core\csgo\math</Filter>
+    </ClInclude>
+    <ClInclude Include="csgodraw.h">
+      <Filter>Файлы заголовков\Core\tools\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Файлы заголовков\Core\tools\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="TextColor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScane.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetHook.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\stb_rect_pack.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\stb_textedit.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\stb_truetype.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx9.h">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Файлы заголовков\Hacks\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -136,6 +196,27 @@
     </ClCompile>
     <ClCompile Include="Netvars.cpp">
       <Filter>Исходные файлы\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintTreverseHook.cpp">
+      <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Исходные файлы\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScane.cpp">
+      <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="ResetHook.cpp">
+      <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Файлы ресурсов\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
+      <Filter>Файлы ресурсов\imgui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

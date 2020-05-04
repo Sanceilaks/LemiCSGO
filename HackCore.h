@@ -3,6 +3,8 @@
 #include <Windows.h>
 #include "IInclude.h"
 #include "HookManager.h"
+#include "Render.h"
+#include <d3d9.h>
 
 class HackCore
 {
@@ -24,9 +26,13 @@ public:
 	CEngineClient* EngineClient = nullptr;
 	IEntityList* ClientEntityList = nullptr;
 	IClientMode* ClientMode = nullptr;
+	CPanel* Panel = nullptr;
+	CSurface* Surface = nullptr;
+	IDirect3DDevice9* DirectX = nullptr;
 
 	HookManager* MyHookManager;
 	CTools* Tools;
+	Render* CRender;
 
 	bool isWork = true;
 	bool isInit = false;

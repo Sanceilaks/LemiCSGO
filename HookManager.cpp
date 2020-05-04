@@ -1,6 +1,5 @@
 #pragma once
 #include "HookManager.h"
-
 #include <MinHook.h>
 #include "UserCmd.h"
 #include "HackCore.h"
@@ -10,6 +9,10 @@ unsigned int get_virtual(void* class_, unsigned int index) { return (unsigned in
 bool HookManager::Init()
 {
 	auto CreateMoveTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->ClientMode, 24));
+	auto PaintTreverseTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->Panel, 41));
+	auto EndScaneTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->DirectX, 42));
+	auto ResetTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->DirectX, 16));
+
 
 	if (MH_Initialize() != MH_OK)
 	{
@@ -22,12 +25,28 @@ bool HookManager::Init()
 		return false;
 	}
 
+	if (MH_CreateHook(PaintTreverseTarget, &Hooks::PaintTraverse::hook, reinterpret_cast<void**>(&this->PaintTreverseOriginal)) != MH_OK) {
+		throw std::runtime_error("failed to initialize PaintTreverse hook (outdated index?)");
+		return false;
+	}
+
+	if (MH_CreateHook(EndScaneTarget, &Hooks::EndScane::hook, reinterpret_cast<void**>(&this->EndScaneOriginal)) != MH_OK) {
+		throw std::runtime_error("failed to initialize EndScane (outdated index?)");
+		return false;
+	}
+
+	if (MH_CreateHook(ResetTarget, &Hooks::Reset::hook, reinterpret_cast<void**>(&this->ResetOriginal)) != MH_OK) {
+		throw std::runtime_error("failed to initialize Reset (outdated index?)");
+		return false;
+	}
+
+
 	if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK) {
 		throw std::runtime_error("failed to enable hooks.");
 		return false;
 	}
 
-	HackCore::AddLog("Hook setuped");
+	HackCore::GetInstance()->AddLog("{CORE} Hooks initialized!");
 
 	return true;
 }
@@ -43,4 +62,22 @@ bool __fastcall Hooks::CreateMove::hook(void* ecx, void* edx, int FrameTime, CUs
 {
 	HackCore::GetInstance()->MyHookManager->CreateMoveOriginal(FrameTime, UCMD);
 	return MyHooks::MyCreateMoveHook(ecx, edx, FrameTime, UCMD);
+}
+
+void __stdcall Hooks::PaintTraverse::hook(unsigned int panel, bool ForceRepaint, bool AllowForce)
+{
+	MyHooks::MyPaintTreverseHook(panel, ForceRepaint, AllowForce);
+	HackCore::GetInstance()->MyHookManager->PaintTreverseOriginal(HackCore::GetInstance()->Panel, panel, ForceRepaint, AllowForce);
+}
+
+long __stdcall Hooks::EndScane::hook(IDirect3DDevice9* device)
+{
+	MyHooks::EndScane(device);
+	return HackCore::GetInstance()->MyHookManager->EndScaneOriginal(device);
+}
+long __stdcall Hooks::Reset::hook(IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* pPresentationParameters)
+{
+	static auto hr = HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
+	MyHooks::Reset(device, pPresentationParameters, hr);
+	return HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
 }

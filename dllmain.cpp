@@ -1,4 +1,6 @@
 ﻿#include "framework.h" 
+#include <Lmcons.h>
+#include "TextColor.h"
 
 //объяснение хуков интерфейса в CEngineClient
 
@@ -6,14 +8,21 @@ DWORD __stdcall HackStart(HMODULE dll)
 {
     HackCore::GetInstance()->CoreInit(); //да-да синглтон
 
-    HackCore::AddLog("Is init!");
+    TCHAR username[UNLEN + 1];
+    DWORD size = UNLEN + 1;
 
-    MessageBoxA(NULL, "Test", "Test", MB_OK);
+    GetUserName((TCHAR*)username, &size);
+
+    std::cout << "Hello, " << red << username << white << "\n";
 
     HackCore::GetInstance()->EngineClient->ExecuteClientCmd("echo HELLO");
 
-    for (; (HackCore::GetInstance()->isWork& 1); std::this_thread::sleep_for(std::chrono::milliseconds(15)));
-
+    while (HackCore::GetInstance()->isWork)
+    {
+        if (GetAsyncKeyState(VK_END))
+            HackCore::GetInstance()->isWork = false;
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+    }
     HackCore::GetInstance()->CoreUnload(dll);
     
     return 0;
