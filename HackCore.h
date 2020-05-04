@@ -2,10 +2,12 @@
 #include <string>
 #include <Windows.h>
 #include "IInclude.h"
+#include "HookManager.h"
 
 class HackCore
 {
-	bool isInit = false;
+	bool Work = true;
+	
 	static HackCore* instance;
 	HackCore()
 	{
@@ -20,11 +22,17 @@ public:
 
 	IBaseClientDll* BaseClientDll = nullptr;
 	CEngineClient* EngineClient = nullptr;
+	IEntityList* ClientEntityList = nullptr;
+	IClientMode* ClientMode = nullptr;
+
+	HookManager* MyHookManager;
 	CTools* Tools;
 
+	bool isWork = true;
+	bool isInit = false;
 	std::string version = "0.1";
 	static HackCore* GetInstance();
-	static void AddLog(std::string text);
+	static void AddLog(const char* val);
 
 	void CoreInit();
 	void CoreUnload(HMODULE hModule);

@@ -40,6 +40,18 @@
     <Filter Include="Файлы заголовков\Core\tools">
       <UniqueIdentifier>{eb285356-0f47-4981-bc9e-782bc32c1565}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Core\csgo\Hooks">
+      <UniqueIdentifier>{81bd83e0-822d-42db-bc52-39c2e4db8d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Core\Hooks">
+      <UniqueIdentifier>{48708661-b85c-40e6-a76b-90bdf878e52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\tools\misc">
+      <UniqueIdentifier>{b53e3b3b-17ca-41dd-83a2-cd61d48fd6c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\csgo\Classes">
+      <UniqueIdentifier>{3617c505-db6b-4025-837a-a287bc308f9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HackCore.h">
@@ -72,6 +84,39 @@
     <ClInclude Include="CEngineClient.h">
       <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="HookManager.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateMoveHook.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="HooksInclude.h">
+      <Filter>Файлы заголовков\Core\csgo\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="BannyHop.h">
+      <Filter>Файлы заголовков\Hacks</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEntity.h">
+      <Filter>Файлы заголовков\Core\csgo\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Netvars.h">
+      <Filter>Файлы заголовков\Core\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="recv.h">
+      <Filter>Файлы заголовков\Core\tools\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientClass.h">
+      <Filter>Файлы заголовков\Core\csgo\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvProps.h">
+      <Filter>Файлы заголовков\Core\csgo\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="fnv.h">
+      <Filter>Файлы заголовков\Core\tools\misc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -79,6 +124,18 @@
     </ClCompile>
     <ClCompile Include="HackCore.cpp">
       <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="HookManager.cpp">
+      <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateMoveHook.cpp">
+      <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="BannyHop.cpp">
+      <Filter>Исходные файлы\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Netvars.cpp">
+      <Filter>Исходные файлы\Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

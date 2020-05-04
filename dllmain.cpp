@@ -12,8 +12,10 @@ DWORD __stdcall HackStart(HMODULE dll)
 
     HackCore::GetInstance()->EngineClient->ExecuteClientCmd("echo HELLO");
 
-    HackCore::GetInstance()->CoreUnload(dll);
+    for (; (HackCore::GetInstance()->isWork& 1); std::this_thread::sleep_for(std::chrono::milliseconds(15)));
 
+    HackCore::GetInstance()->CoreUnload(dll);
+    
     return 0;
 }
 
