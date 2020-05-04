@@ -13,15 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Tools">
+      <UniqueIdentifier>{d1dcf735-fbc9-49ad-bc34-b93858b7ba5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Hacks">
+      <UniqueIdentifier>{a495baf0-491e-4b45-8539-53b037b85e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Hacks">
+      <UniqueIdentifier>{22a8a3cf-f874-4525-832a-0c9f4c2d437a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Core">
+      <UniqueIdentifier>{49922220-fe50-4735-9ac0-8797652cc6ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core">
+      <UniqueIdentifier>{791fe40c-b25f-441f-8325-81ac13697302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\csgo">
+      <UniqueIdentifier>{b4817da6-6510-4dd8-96e8-c730003604f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\csgo\Interfaces">
+      <UniqueIdentifier>{629c5272-e6d2-47bc-aee9-ec33dd7bbc55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\csgo\math">
+      <UniqueIdentifier>{95bf06fd-9619-4527-8ee3-7fa8dfae5fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\tools">
+      <UniqueIdentifier>{eb285356-0f47-4981-bc9e-782bc32c1565}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HackCore.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>Файлы заголовков\Core\csgo\math</Filter>
+    </ClInclude>
+    <ClInclude Include="top.h">
+      <Filter>Файлы заголовков\Core\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="UserCmd.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IInclude.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMode.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientEntityList.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseClient.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngineClient.h">
+      <Filter>Файлы заголовков\Core\csgo\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="HackCore.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

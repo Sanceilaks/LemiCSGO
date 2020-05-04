@@ -2,3 +2,4 @@
 *.db
 .git
 .vs
+Debug
