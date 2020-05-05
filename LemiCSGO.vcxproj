@@ -165,17 +165,23 @@
   <ItemGroup>
     <ClInclude Include="BannyHop.h" />
     <ClInclude Include="CBaseClient.h" />
-    <ClInclude Include="CBaseEntity.h" />
+    <ClInclude Include="CBaseCombatWeapon.h" />
     <ClInclude Include="CEngineClient.h" />
+    <ClInclude Include="CIInput.h" />
     <ClInclude Include="ClientClass.h" />
     <ClInclude Include="ClientEntityList.h" />
     <ClInclude Include="ClientMode.h" />
+    <ClInclude Include="color.h" />
     <ClInclude Include="CPanel.h" />
     <ClInclude Include="CreateMoveHook.h" />
     <ClInclude Include="csgodraw.h" />
+    <ClInclude Include="CSPlayer.h" />
     <ClInclude Include="CSurface.h" />
+    <ClInclude Include="defs.h" />
     <ClInclude Include="EndScane.h" />
+    <ClInclude Include="ESPBox.h" />
     <ClInclude Include="fnv.h" />
+    <ClInclude Include="HackUtils.h" />
     <ClInclude Include="HookManager.h" />
     <ClInclude Include="HooksInclude.h" />
     <ClInclude Include="IInclude.h" />
@@ -186,9 +192,11 @@
     <ClInclude Include="imgui\stb_rect_pack.h" />
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
+    <ClInclude Include="interfaceUtils.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Netvars.h" />
     <ClInclude Include="PaintTreverseHook.h" />
+    <ClInclude Include="QAngle.h" />
     <ClInclude Include="recv.h" />
     <ClInclude Include="RecvProps.h" />
     <ClInclude Include="Render.h" />
@@ -200,13 +208,17 @@
     <ClInclude Include="HackCore.h" />
     <ClInclude Include="top.h" />
     <ClInclude Include="vector.h" />
+    <ClInclude Include="vector2d.h" />
+    <ClInclude Include="vector4d.h" />
     <ClInclude Include="vertex.h" />
+    <ClInclude Include="VMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BannyHop.cpp" />
     <ClCompile Include="CreateMoveHook.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="EndScane.cpp" />
+    <ClCompile Include="ESPBox.cpp" />
     <ClCompile Include="HackCore.cpp" />
     <ClCompile Include="HookManager.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
@@ -216,6 +228,10 @@
     <ClCompile Include="PaintTreverseHook.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResetHook.cpp" />
+    <ClCompile Include="vector.cpp" />
+    <ClCompile Include="vector2d.cpp" />
+    <ClCompile Include="vector4d.cpp" />
+    <ClCompile Include="VMatrix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

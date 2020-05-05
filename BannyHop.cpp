@@ -1,10 +1,12 @@
 #include "BannyHop.h"
 #include "HackCore.h"
-#include "CBaseEntity.h"
+#include "CSPlayer.h"
 
-void BannyHop::Do(CUserCmd* cmd)
+
+void HacksF::BannyHop::Do(CUserCmd* cmd)
 {
-	CBaseEntity* LocalPlayer = (CBaseEntity*)HackCore::GetInstance()->ClientEntityList->GetEntityByIndex(HackCore::GetInstance()->EngineClient->GetLocalPlayerIndex());
+	
+	CSPlayer* LocalPlayer = CSPlayer::GetLocalPlayer();
 	
 	if (!LocalPlayer)
 		return;

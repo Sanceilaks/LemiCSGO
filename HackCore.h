@@ -4,6 +4,7 @@
 #include "IInclude.h"
 #include "HookManager.h"
 #include "Render.h"
+#include "top.h"
 #include <d3d9.h>
 
 class HackCore
@@ -29,6 +30,7 @@ public:
 	CPanel* Panel = nullptr;
 	CSurface* Surface = nullptr;
 	IDirect3DDevice9* DirectX = nullptr;
+	CIInput* InputSystem = nullptr;
 
 	HookManager* MyHookManager;
 	CTools* Tools;

@@ -37,8 +37,8 @@ public:
 	int CommandNumber;
 	int TickCount;
 
-	CVector ViewAngles;
-	CVector AimDirection;
+	Math::CVector ViewAngles;
+	Math::CVector AimDirection;
 
 	float ForwardMove;
 	float SideMove;

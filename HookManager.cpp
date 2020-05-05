@@ -16,26 +16,31 @@ bool HookManager::Init()
 
 	if (MH_Initialize() != MH_OK)
 	{
+		printf("failed to initialize MH_Initialize.\n");
 		throw std::runtime_error("failed to initialize MH_Initialize.");
 		return false;
 	}
 
 	if (MH_CreateHook(CreateMoveTarget, &Hooks::CreateMove::hook, reinterpret_cast<void**>(&this->CreateMoveOriginal)) != MH_OK) {
+		printf("failed to initialize CreateMove (outdated index?)\n");
 		throw std::runtime_error("failed to initialize create_move. (outdated index?)");
 		return false;
 	}
 
 	if (MH_CreateHook(PaintTreverseTarget, &Hooks::PaintTraverse::hook, reinterpret_cast<void**>(&this->PaintTreverseOriginal)) != MH_OK) {
+		printf("failed to initialize PaintTreverse hook (outdated index?)\n");
 		throw std::runtime_error("failed to initialize PaintTreverse hook (outdated index?)");
 		return false;
 	}
 
 	if (MH_CreateHook(EndScaneTarget, &Hooks::EndScane::hook, reinterpret_cast<void**>(&this->EndScaneOriginal)) != MH_OK) {
+		printf("failed to initialize EndScane (outdated index?)\n");
 		throw std::runtime_error("failed to initialize EndScane (outdated index?)");
 		return false;
 	}
 
 	if (MH_CreateHook(ResetTarget, &Hooks::Reset::hook, reinterpret_cast<void**>(&this->ResetOriginal)) != MH_OK) {
+		printf("failed to initialize Reset (outdated index?)\n");
 		throw std::runtime_error("failed to initialize Reset (outdated index?)");
 		return false;
 	}
@@ -77,7 +82,7 @@ long __stdcall Hooks::EndScane::hook(IDirect3DDevice9* device)
 }
 long __stdcall Hooks::Reset::hook(IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* pPresentationParameters)
 {
-	static auto hr = HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
+	long hr = HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
 	MyHooks::Reset(device, pPresentationParameters, hr);
-	return HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
+	return hr;
 }

@@ -5169,6 +5169,11 @@ ImDrawList* ImGui::GetWindowDrawList()
     return window->DrawList;
 }
 
+ImDrawList* ImGui::GetOverlayDrawList()
+{
+    return &GImGui->OverlayDrawList;
+}
+
 ImFont* ImGui::GetFont()
 {
     return GImGui->Font;

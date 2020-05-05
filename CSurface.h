@@ -18,10 +18,10 @@ public:
 		return (*(original_fn**)this)[25](this, r, g, b, a);
 	}
 
-	void draw_polygon(int n, vertex* vertice, bool clip_vertices = true) {
-		using original_fn = void(__thiscall*)(CSurface*, int, vertex*, bool);
-		return (*(original_fn**)this)[106](this, n, vertice, clip_vertices);
-	}
+	//void draw_polygon(int n, vertex* vertice, bool clip_vertices = true) {
+	//	using original_fn = void(__thiscall*)(CSurface*, int, vertex*, bool);
+	//	return (*(original_fn**)this)[106](this, n, vertice, clip_vertices);
+	//}
 	void draw_filled_rectangle(int x, int y, int w, int h) {
 		using original_fn = void(__thiscall*)(CSurface*, int, int, int, int);
 		return (*(original_fn**)this)[16](this, x, y, x + w, y + h);
@@ -99,10 +99,10 @@ public:
 		return (*(original_fn**)this)[44](this, std::ref(width), std::ref(height));  //width, height
 	}
 
-	void draw_textured_polygon(int vertex_count, vertex* ver, bool clip_vertices = true) {
-		using original_fn = void(__thiscall*)(CSurface*, int, vertex*, bool);
-		return (*(original_fn**)this)[106](this, vertex_count, ver, clip_vertices);
-	}
+	//void draw_textured_polygon(int vertex_count, vertex* ver, bool clip_vertices = true) {
+	//	using original_fn = void(__thiscall*)(CSurface*, int, vertex*, bool);
+	//	return (*(original_fn**)this)[106](this, vertex_count, ver, clip_vertices);
+	//}
 
 	void draw_outlined_circle(int x, int y, int radius, int segments) {
 		using original_fn = void(__thiscall*)(CSurface*, int, int, int, int);
@@ -127,5 +127,10 @@ public:
 	void draw_textured_rect(int x, int y, int width, int height) {
 		using original_fn = void(__thiscall*)(CSurface*, int, int, int, int);
 		return (*(original_fn**)this)[41](this, x, y, width, height);
+	}
+
+	void EnebleMouseCapture(unsigned int panel, bool state)
+	{
+		
 	}
 };

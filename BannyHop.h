@@ -1,8 +1,10 @@
-#pragma once
 #include "UserCmd.h"
 
-namespace BannyHop
-{
-	void Do(CUserCmd* cmd);
-};
 
+namespace HacksF
+{
+	namespace BannyHop
+	{
+		void Do(CUserCmd* cmd);
+	};
+}

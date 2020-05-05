@@ -21,7 +21,7 @@ DWORD __stdcall HackStart(HMODULE dll)
     {
         if (GetAsyncKeyState(VK_END))
             HackCore::GetInstance()->isWork = false;
-        std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
     HackCore::GetInstance()->CoreUnload(dll);
     
@@ -34,8 +34,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     {  
     case DLL_PROCESS_ATTACH:
     {
-        DisableThreadLibraryCalls(hModule);
-        CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)HackStart, hModule, NULL, NULL);
+        try
+        {
+            DisableThreadLibraryCalls(hModule);
+            CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)HackStart, hModule, NULL, NULL);
+        }
+        catch (...)
+        {
+            printf("ERROR !!!!!!!!\n");
+            HackCore::GetInstance()->CoreUnload(hModule);
+        }
     }
     case DLL_PROCESS_DETACH:
         break;

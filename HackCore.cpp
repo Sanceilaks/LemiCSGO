@@ -34,12 +34,14 @@ void HackCore::CoreInit()
 	this->ClientEntityList = (IEntityList*)this->Tools->GetInterface("client_panorama.dll", "VClientEntityList003");
 	this->Panel = (CPanel*)this->Tools->GetInterface("vgui2.dll", "VGUI_Panel009");
 	this->Surface = (CSurface*)this->Tools->GetInterface("vguimatsurface.dll", "VGUI_Surface031");
+	this->InputSystem = (CIInput*)this->Tools->GetInterface("inputsystem.dll", "InputSystemVersion001");
 
 	printf("{CORE} BaseClientDll = %u\n", reinterpret_cast<DWORD>(this->BaseClientDll));
 	printf("{CORE} EngineClient = %u\n", reinterpret_cast<DWORD>(this->EngineClient));
 	printf("{CORE} ClientEntityList = %u\n", reinterpret_cast<DWORD>(this->ClientEntityList));
 	printf("{CORE} CPanel = %u\n", reinterpret_cast<DWORD>(this->Panel));
 	printf("{CORE} CSurface = %u\n", reinterpret_cast<DWORD>(this->Surface));
+	printf("{CORE} InputSystem = %u\n", reinterpret_cast<DWORD>(this->InputSystem));
 
 	do {
 		this->ClientMode = **(IClientMode***)((*(uintptr_t**)this->BaseClientDll)[10] + 0x5);

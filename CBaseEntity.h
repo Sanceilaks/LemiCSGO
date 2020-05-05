@@ -1,13 +1,25 @@
 #pragma once
 #include <Windows.h>
 #include "Netvars.h"
-
+#include "vector.h"
 #define ON_GRAUND		(1 << 0)
 
 
 class CBaseEntity
 {
+
 public:
+	template<class Y>
+	inline Y GetFiledValue(int offset)
+	{
+		return *(Y*)((DWORD)this + offset);
+	}
+
+	template<class Y>
+	inline Y* GetFiledPointer(int offset)
+	{
+		return (Y*)((DWORD)this + offset);
+	}
 	void* Animating() {
 		return reinterpret_cast<void*>(uintptr_t(this) + 0x4);
 	}
@@ -26,13 +38,13 @@ public:
 		using original_fn = bool(__thiscall*)(CBaseEntity*);
 		return (*(original_fn**)this)[165](this);
 	}
-	//bool setup_bones(matrix_t* out, int max_bones, int mask, float time) {
-	//	if (!this)
-	//		return false;
+	bool setup_bones(Math::matrix3x4_t* out, int max_bones, int mask, float time) {
+		if (!this)
+			return false;
 
-	//	using original_fn = bool(__thiscall*)(void*, matrix_t*, int, int, float);
-	//	return (*(original_fn**)animating())[13](animating(), out, max_bones, mask, time);
-	//}
+		using original_fn = bool(__thiscall*)(void*, Math::matrix3x4_t*, int, int, float);
+		return (*(original_fn**)Animating())[13](Animating(), out, max_bones, mask, time);
+	}
 	//model_t* model() {
 	//	using original_fn = model_t * (__thiscall*)(void*);
 	//	return (*(original_fn**)animating())[8](animating());
@@ -41,20 +53,20 @@ public:
 		using original_fn = void(__thiscall*)(CBaseEntity*);
 		(*(original_fn**)this)[218](this);
 	}
-	//int draw_model(int flags, uint8_t alpha) {
-	//	using original_fn = int(__thiscall*)(void*, int, uint8_t);
-	//	return (*(original_fn**)animating())[9](animating(), flags, alpha);
-	//}
-	//void set_angles(vec3_t angles) {
-	//	using original_fn = void(__thiscall*)(void*, const vec3_t&);
-	//	static original_fn set_angles_fn = (original_fn)((DWORD)utilities::pattern_scan("client_panorama.dll", "55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1"));
-	//	set_angles_fn(this, angles);
-	//}
-	//void set_position(vec3_t position) {
-	//	using original_fn = void(__thiscall*)(void*, const vec3_t&);
-	//	static original_fn set_position_fn = (original_fn)((DWORD)utilities::pattern_scan("client_panorama.dll", "55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8"));
-	//	set_position_fn(this, position);
-	//}
+	int draw_model(int flags, uint8_t alpha) {
+		using original_fn = int(__thiscall*)(void*, int, uint8_t);
+		return (*(original_fn**)Animating())[9](Animating(), flags, alpha);
+	}
+	void set_angles(Math::CVector angles) {
+		using original_fn = void(__thiscall*)(void*, const Math::CVector&);
+		static original_fn set_angles_fn = (original_fn)((DWORD) IU::Memory::PatternScaner("client_panorama.dll", "55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1"));
+		set_angles_fn(this, angles);
+	}
+	void set_position(Math::CVector position) {
+		using original_fn = void(__thiscall*)(void*, const Math::CVector&);
+		static original_fn set_position_fn = (original_fn)((DWORD)IU::Memory::PatternScaner("client_panorama.dll", "55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8"));
+		set_position_fn(this, position);
+	}
 
 	void SetModelIndex(int index) {
 		using original_fn = void(__thiscall*)(void*, int);
@@ -78,12 +90,12 @@ public:
 
 	NETVAR("DT_CSPlayer", "m_fFlags", flags, int);
 	OFFSET(bool, dormant, 0xED);
-	NETVAR("DT_BaseEntity", "m_hOwnerEntity", owner_handle, unsigned long);
-	NETVAR("DT_CSPlayer", "m_flSimulationTime", simulation_time, float);
-	//NETVAR("DT_BasePlayer", "m_vecOrigin", origin, vec3_t);
-	//NETVAR("DT_BasePlayer", "m_vecViewOffset[0]", view_offset, vec3_t);
-	NETVAR("DT_CSPlayer", "m_iTeamNum", team, int);
-	NETVAR("DT_BaseEntity", "m_bSpotted", spotted, bool);
-	NETVAR("DT_CSPlayer", "m_nSurvivalTeam", survival_team, int);
-	NETVAR("DT_CSPlayer", "m_flHealthShotBoostExpirationTime", health_boost_time, float);
+	NETVAR("DT_BaseEntity", "m_hOwnerEntity", GetOwnerHandle, unsigned long);
+	NETVAR("DT_CSPlayer", "m_flSimulationTime", GetSimulationTime, float);
+	NETVAR("DT_BasePlayer", "m_vecOrigin", GetOrigin, Math::CVector);
+	NETVAR("DT_BasePlayer", "m_vecViewOffset[0]", GetViewOffset, Math::CVector);
+	NETVAR("DT_CSPlayer", "m_iTeamNum", GetTeam, int);
+	NETVAR("DT_BaseEntity", "m_bSpotted", GetSpotted, bool);
+	NETVAR("DT_CSPlayer", "m_nSurvivalTeam", SurvivalTeam, int);
+	NETVAR("DT_CSPlayer", "m_flHealthShotBoostExpirationTime", GetHealtBhoostTime, float);
 };
