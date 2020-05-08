@@ -21,7 +21,7 @@ namespace Utils
 		}
 		Color(float* col_arr)
 		{
-			SetColor(col_arr[0] * 255, col_arr[1] * 255, col_arr[2] * 255, col_arr[3] * 255);
+			SetColor(col_arr[0], col_arr[1], col_arr[2], col_arr[3]);
 		}
 
 		// set the color
