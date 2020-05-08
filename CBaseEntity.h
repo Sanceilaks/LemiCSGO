@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "Netvars.h"
 #include "vector.h"
+#include "ClientClass.h"
 #define ON_GRAUND		(1 << 0)
 
 
@@ -86,6 +87,18 @@ public:
 	int net_set_destroyed_on_recreate_entities() {
 		using original_fn = int(__thiscall*)(void*);
 		return (*(original_fn**)Networkable())[13](Networkable());
+	}
+
+	ClientClass* GetClientClass()
+	{
+		using orig_fn = ClientClass*(__thiscall*)(void*);
+		return(*(orig_fn**)Networkable())[2](Networkable());
+	}
+
+	int GetMaxHealth()
+	{
+		using orig_fn = int(__thiscall*)(void*);
+		return(*(orig_fn**)this)[122](this);
 	}
 
 	NETVAR("DT_CSPlayer", "m_fFlags", flags, int);

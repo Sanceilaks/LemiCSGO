@@ -16,6 +16,7 @@ DWORD __stdcall HackStart(HMODULE dll)
     std::cout << "Hello, " << red << username << white << "\n";
 
     //HackCore::GetInstance()->EngineClient->ExecuteClientCmd("echo HELLO");
+    printf("Version 2\n");
 
     while (HackCore::GetInstance()->isWork)
     {

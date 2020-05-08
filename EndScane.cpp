@@ -5,6 +5,7 @@
 #include "imgui/imgui_impl_dx9.h"
 #include "menu.h"
 #include "ESPBox.h"
+#include "MenuThemes.h"
 
 extern IMGUI_API LRESULT   ImGui_ImplDX9_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -45,6 +46,8 @@ void __stdcall MyHooks::EndScane(IDirect3DDevice9* device)
 			ImGui_ImplDX9_Init(game_hwnd, device);
 
 			ImGui::GetIO().IniFilename = nullptr;
+
+			Menu::Themes::MyStdTheme::Setup();
 
 			isInit = true;
 		}

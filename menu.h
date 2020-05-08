@@ -4,8 +4,19 @@
 #include "CustomUIModules.h"
 #include "Settings.h"
 
+#define ButtonSize ImVec2(80, 30)
+
 namespace Menu
 {
+	enum WinButtons
+	{
+		AIM,
+		VISUAL,
+		SKIN,
+		MISC,
+		CONFIG
+	};
+
 	namespace mywin
 	{
 		namespace Visual
@@ -14,16 +25,107 @@ namespace Menu
 			{
 				ImGui::BeginGroup();
 				ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::ColorEdit4("ESPBox color", CoreSettings::Get().GetHackSettings()->ESP->BoxColor, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoOptions | ImGuiColorEditFlags_RGB | ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_NoInputs);
 				ImGui::EndGroup();
 			};
 		};
+		namespace Aim
+		{
+			static void Draw()
+			{
+				ImGui::BeginGroup();
+				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::EndGroup();
+			};
+		}
+		namespace Skins
+		{
+			static void Draw()
+			{
+				ImGui::BeginGroup();
+				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::EndGroup();
+			};
+		}
+		namespace Misc
+		{
+			static void Draw()
+			{
+				ImGui::BeginGroup();
+				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::EndGroup();
+			};
+		}
+		namespace Config
+		{
+			static void Draw()
+			{
+				ImGui::BeginGroup();
+				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::EndGroup();
+			};
+		}
 	};
+	static int currentwin = VISUAL;
 	static bool is_open = false;
+
+	static void DrawCurrent()
+	{
+		switch (currentwin)
+		{
+		case AIM:
+			mywin::Aim::Draw();
+			break;
+		case VISUAL:
+			mywin::Visual::Draw();
+			break;
+		case SKIN:
+			mywin::Skins::Draw();
+			break;
+		case MISC:
+			mywin::Misc::Draw();
+			break;
+		case CONFIG:
+			mywin::Config::Draw();
+			break;
+		}
+	}
+
 	static void Draw()
 	{
-		ImGui::Begin("Hello", (bool*)0, ImVec2(300, 640), 0.3f, ImGuiWindowFlags_NoResize || ImGuiColorEditFlags_NoTooltip);
-		if (ImGui::Button("Close")) HackCore::GetInstance()->MyGlobals->MenuIsOpen = !HackCore::GetInstance()->MyGlobals->MenuIsOpen;
-		mywin::Visual::Draw();
+		ImGui::Begin("Hello", (bool*)0, ImVec2(700, 340), 0.9f, ImGuiWindowFlags_NoResize);
+		ImGui::SameLine();
+
+		ImGui::BeginChild("###tabs", ImVec2(700, 40));
+		ImGui::SameLine();
+		//ImGui::Spacing();
+
+		if (ImGui::Button("AIM", ButtonSize))		currentwin = AIM;
+		ImGui::SameLine();
+		//ImGui::Spacing();
+
+		if (ImGui::Button("VISUAL", ButtonSize))	currentwin = VISUAL;
+		ImGui::SameLine();
+		//ImGui::Spacing();
+
+		if (ImGui::Button("SKIN", ButtonSize))		currentwin = SKIN;
+		ImGui::SameLine();
+		//ImGui::Spacing();
+
+		if (ImGui::Button("MISC", ButtonSize))		currentwin = MISC;
+		//ImGui::Spacing();
+		ImGui::SameLine();
+
+		if (ImGui::Button("CONFIG", ButtonSize))	currentwin = CONFIG;
+		//ImGui::Spacing();
+		ImGui::SameLine();
+
+		ImGui::EndChild();
+
+		ImGui::Spacing();
+		ImGui::Spacing();
+		
+		DrawCurrent();
 
 		ImGui::End();
 	}
