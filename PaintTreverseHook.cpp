@@ -4,6 +4,9 @@
 
 void __stdcall MyHooks::MyPaintTreverseHook(unsigned int panel, bool ForceRepaint, bool AllowForce)
 {
+	//HackCore::GetInstance()->Panel->CurrentPanel = panel;
+
+
 	//auto panel_to_draw = fnv::hash(HackCore::GetInstance()->Panel->get_panel_name(panel));
 
 	//switch (panel_to_draw) {

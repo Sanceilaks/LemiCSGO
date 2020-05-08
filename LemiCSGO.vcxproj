@@ -177,6 +177,7 @@
     <ClInclude Include="csgodraw.h" />
     <ClInclude Include="CSPlayer.h" />
     <ClInclude Include="CSurface.h" />
+    <ClInclude Include="CustomUIModules.h" />
     <ClInclude Include="defs.h" />
     <ClInclude Include="EndScane.h" />
     <ClInclude Include="ESPBox.h" />
@@ -193,7 +194,9 @@
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
     <ClInclude Include="interfaceUtils.h" />
+    <ClInclude Include="LockCursorHook.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="MenuThemes.h" />
     <ClInclude Include="Netvars.h" />
     <ClInclude Include="PaintTreverseHook.h" />
     <ClInclude Include="QAngle.h" />
@@ -201,7 +204,8 @@
     <ClInclude Include="RecvProps.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="ResetHook.h" />
-    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="SingletonTemplate.h" />
     <ClInclude Include="TextColor.h" />
     <ClInclude Include="UserCmd.h" />
     <ClInclude Include="framework.h" />
@@ -224,6 +228,7 @@
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
     <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="LockCursorHook.cpp" />
     <ClCompile Include="Netvars.cpp" />
     <ClCompile Include="PaintTreverseHook.cpp" />
     <ClCompile Include="Render.cpp" />

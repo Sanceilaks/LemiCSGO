@@ -26,11 +26,11 @@ namespace draw
 		namespace DXDraw
 		{
 			//Цисует разные штуки (асг на минималках)
-			inline void RenderLine(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Color col)
+			inline void RenderLine(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Utils::Color col)
 			{
 				draw_list->AddLine(ImVec2(x1, y1), ImVec2(x2, y2), col.GetU32());
 			}
-			inline void RenderOutlinedCricle(ImDrawList* draw_list, float x, float y, float radius, Color col = Color(0, 0, 0), int segments = 12)
+			inline void RenderOutlinedCricle(ImDrawList* draw_list, float x, float y, float radius, Utils::Color col = Utils::Color(0, 0, 0), int segments = 12)
 			{
 				draw_list->AddCircle(ImVec2(x, y), radius, col.GetU32());
 			}
@@ -38,11 +38,11 @@ namespace draw
 			{
 				draw_list->AddText(font, font_size, ImVec2(x, y), col.GetU32(), text);
 			}*/
-			inline void RenderOutlinedRect(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Color col, float rounding = 0.0f, int rounding_corners_flags = ImGuiHelp::ImDrawCornerFlags_All)
+			inline void RenderOutlinedRect(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Utils::Color col = Utils::Color(0, 0, 0), float rounding = 0.0f, int rounding_corners_flags = ImGuiHelp::ImDrawCornerFlags_All)
 			{
 				draw_list->AddRect(ImVec2(x1, y1), ImVec2(x2, y2), col.GetU32(), rounding, rounding_corners_flags);
 			}
-			inline void RenderRectFilled(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Color col, float rounding = 0.0f, int rounding_corners_flags = ImGuiHelp::ImDrawCornerFlags_All)
+			inline void RenderRectFilled(ImDrawList* draw_list, float x1, float y1, float x2, float y2, Utils::Color col, float rounding = 0.0f, int rounding_corners_flags = ImGuiHelp::ImDrawCornerFlags_All)
 			{
 				draw_list->AddRectFilled(ImVec2(x1, y1), ImVec2(x2, y2), col.GetU32(), rounding, rounding_corners_flags);
 			}

@@ -4,12 +4,16 @@
 #include "HackCore.h"
 #include "CSPlayer.h"
 #include "HackUtils.h"
+#include "Settings.h"
 
 void HacksF::ESPBox::Render()
 {
-	if (!HackCore::GetInstance()->EngineClient->isInGame())
+	if (!CoreSettings::Get().GetHackSettings()->ESP->IsActive)
 		return;
 
+	if (!HackCore::GetInstance()->EngineClient->isInGame())
+		return;
+	
 	ImDrawList* drawlist = ImGui::GetOverlayDrawList();
 	
 
@@ -17,7 +21,9 @@ void HacksF::ESPBox::Render()
 	{
 		CSPlayer* ent = (CSPlayer*)HackCore::GetInstance()->ClientEntityList->GetEntityByIndex(i);
 		if (!ent) continue;
-		if (!ent->isAlive() || (ent == CSPlayer::GetLocalPlayer())) continue;
+
+		if (ent->isAlive() || (ent == CSPlayer::GetLocalPlayer())) continue;
+		
 
 		Math::CVector vOrigin = ent->GetOrigin();
 		Math::CVector vHead = HacksF::HGame::GetEntityBone(ent, ECSPlayerBones::head_0);
@@ -44,9 +50,9 @@ void HacksF::ESPBox::Render()
 			x2 = x1 + w;
 			y2 = -h + y1;
 
-			draw::csgod::DXDraw::RenderOutlinedRect(drawlist, x1, y1, x2, y2, Color(0, 0, 0, 255));
+			draw::csgod::DXDraw::RenderOutlinedRect(drawlist, x1, y1, x2, y2, CoreSettings::Get().GetHackSettings()->ESP->BoxColor);
 		}
 	}
-
+	
 	//draw::csgod::DXDraw::RenderRectFilled(drawlist, 500, 500, 600, 600, Color(10, 10, 10, 255));
 }

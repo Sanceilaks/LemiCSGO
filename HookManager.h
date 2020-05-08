@@ -2,6 +2,7 @@
 #include "UserCmd.h"
 #include "HooksInclude.h"
 #include "CPanel.h"
+#include "CSurface.h"
 #include <d3d9.h>
 
 namespace Hooks
@@ -29,6 +30,12 @@ namespace Hooks
 		using func = long(__stdcall*)(IDirect3DDevice9*, D3DPRESENT_PARAMETERS*);
 		static long __stdcall hook(IDirect3DDevice9* device, D3DPRESENT_PARAMETERS* pPresentationParameters);
 	}
+
+	namespace LockCursor
+	{
+		using func = void(__thiscall*)(CSurface*);
+		static void __stdcall hook();
+	}
 }
 
 class HookManager
@@ -43,6 +50,7 @@ public:
 	Hooks::PaintTraverse::func PaintTreverseOriginal = nullptr;
 	Hooks::EndScane::func EndScaneOriginal = nullptr;
 	Hooks::Reset::func ResetOriginal = nullptr;
+	Hooks::LockCursor::func LockCursorOriginal = nullptr;
 
 	bool Init();
 	void RemoveAllHook();

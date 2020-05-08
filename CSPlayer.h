@@ -18,6 +18,6 @@ public:
 	NETVAR("DT_BasePlayer", "m_aimPunchAngle", GetAimPunch, Math::CVector*);
 	NETVAR("DT_BasePlayer", "m_viewPunchAngle", GetViewPunch, Math::CVector*);
 	NETVAR("DT_BasePlayer", "m_iHealth", GetHealth, int);
-	NETVAR("DT_BasePlayer", "m_lifeState", isAlive, bool);
+	NETVAR("DT_BasePlayer", "m_lifeState", isAlive, bool); //true == false. Sorry for my govnokode(
 };
 

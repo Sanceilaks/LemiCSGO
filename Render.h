@@ -1,5 +1,5 @@
 #pragma once
-#include "CSurface.h"
+//#include "CSurface.h"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx9.h"
 
@@ -28,5 +28,5 @@ class Render
 {
 	bool isInit = false;
 public:
-	void Init(CSurface* core);
+	//void Init(CSurface* core);
 };

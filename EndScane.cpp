@@ -53,15 +53,15 @@ void __stdcall MyHooks::EndScane(IDirect3DDevice9* device)
 	{
 		ImGui_ImplDX9_NewFrame();
 
-		if (Menu::is_open)
+		if (HackCore::GetInstance()->MyGlobals->MenuIsOpen)
 		{
 			Menu::Draw();
 		}
 		else 
 		{
-			
+			HacksF::DrawHack();
 		}
-		HacksF::DrawHack();
+		
 		ImGui::Render();
 	}
 }

@@ -1,11 +1,12 @@
 #include "BannyHop.h"
 #include "HackCore.h"
 #include "CSPlayer.h"
-
+#include "Settings.h"
 
 void HacksF::BannyHop::Do(CUserCmd* cmd)
 {
-	
+	if (!CoreSettings::Get().GetHackSettings()->BHOP->isActive)
+		return;
 	CSPlayer* LocalPlayer = CSPlayer::GetLocalPlayer();
 	
 	if (!LocalPlayer)

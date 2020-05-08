@@ -27,7 +27,8 @@ void HackCore::CoreInit()
 	freopen("CONIN$", "rb", stdin);
 
 	this->Tools = new CTools();
-	
+
+
 	//getting interfaces (classes)
 	this->BaseClientDll = (IBaseClientDll*) this->Tools->GetInterface("client_panorama.dll", "VClient018");
 	this->EngineClient = (CEngineClient*)this->Tools->GetInterface("engine.dll", "VEngineClient014");
@@ -57,6 +58,7 @@ void HackCore::CoreInit()
 	this->MyHookManager->Init();
 
 	//this->CRender->Init(this->Surface);
+
 
 	this->isInit = !this->isInit;
 }

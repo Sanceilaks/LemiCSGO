@@ -15,7 +15,7 @@ DWORD __stdcall HackStart(HMODULE dll)
 
     std::cout << "Hello, " << red << username << white << "\n";
 
-    HackCore::GetInstance()->EngineClient->ExecuteClientCmd("echo HELLO");
+    //HackCore::GetInstance()->EngineClient->ExecuteClientCmd("echo HELLO");
 
     while (HackCore::GetInstance()->isWork)
     {

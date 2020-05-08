@@ -7,6 +7,13 @@
 #include "top.h"
 #include <d3d9.h>
 
+
+class Globals
+{
+public:
+	bool MenuIsOpen = false;
+};
+
 class HackCore
 {
 	bool Work = true;
@@ -35,6 +42,7 @@ public:
 	HookManager* MyHookManager;
 	CTools* Tools;
 	Render* CRender;
+	Globals* MyGlobals = new Globals(); //why no?
 
 	bool isWork = true;
 	bool isInit = false;

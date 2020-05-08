@@ -2,6 +2,8 @@
 
 class CPanel {
 public:
+	unsigned int CurrentPanel = 0;
+
 	void set_keyboard_input_enabled(unsigned int panel_id, bool state) {
 		using original_fn = void(__thiscall*)(CPanel*, unsigned int, bool);
 		return (*(original_fn**)this)[31](this, panel_id, state);

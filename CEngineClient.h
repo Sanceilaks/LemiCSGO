@@ -39,11 +39,11 @@ public:
 		using orig_fn = int(__thiscall*)(CEngineClient*, int);
 		return (*(orig_fn**)this)[9](this, user_id);
 	}
-	void ExecuteClientCmd(const char* exec)
-	{
-		using orig_fn = void(__thiscall*)(CEngineClient*, const char*);
-		return (*(orig_fn**)this)[108](this, exec);
-	}
+	//void ExecuteClientCmd(const char* exec)
+	//{
+	//	using orig_fn = void(__thiscall*)(CEngineClient*, const char*);
+	//	return (*(orig_fn**)this)[108](this, exec);
+	//}
 
 	//i_net_channel* get_net_channel_info() {
 	//	using original_fn = i_net_channel * (__thiscall*)(CEngineClient*);
@@ -98,4 +98,10 @@ public:
 	{
 		return IU::Memory::call_virtual<float(__thiscall*)(void*)>(this, 14)(this);
 	}
+
+	//void SetMouseCapture(bool state)
+	//{
+	//	std::string msg = "cl_mouseenable " + std::to_string(state);
+	//	this->ExecuteClientCmd(msg.c_str());
+	//}
 };

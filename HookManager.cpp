@@ -4,6 +4,8 @@
 #include "UserCmd.h"
 #include "HackCore.h"
 
+
+
 unsigned int get_virtual(void* class_, unsigned int index) { return (unsigned int)(*(int**)class_)[index]; }
 
 bool HookManager::Init()
@@ -12,6 +14,7 @@ bool HookManager::Init()
 	auto PaintTreverseTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->Panel, 41));
 	auto EndScaneTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->DirectX, 42));
 	auto ResetTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->DirectX, 16));
+	auto LockCursorTarget = reinterpret_cast<void*>(get_virtual(HackCore::GetInstance()->Surface, 67));
 
 
 	if (MH_Initialize() != MH_OK)
@@ -45,6 +48,11 @@ bool HookManager::Init()
 		return false;
 	}
 
+	if (MH_CreateHook(LockCursorTarget, &Hooks::LockCursor::hook, reinterpret_cast<void**>(&this->LockCursorOriginal)) != MH_OK) {
+		printf("failed to initialize LockCursor (outdated index?)\n");
+		throw std::runtime_error("failed to initialize Reset (outdated index?)");
+		return false;
+	}
 
 	if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK) {
 		throw std::runtime_error("failed to enable hooks.");
@@ -85,4 +93,10 @@ long __stdcall Hooks::Reset::hook(IDirect3DDevice9* device, D3DPRESENT_PARAMETER
 	long hr = HackCore::GetInstance()->MyHookManager->ResetOriginal(device, pPresentationParameters);
 	MyHooks::Reset(device, pPresentationParameters, hr);
 	return hr;
+}
+
+void __stdcall Hooks::LockCursor::hook()
+{
+	if (!MyHooks::MyLockCursor())
+		HackCore::GetInstance()->MyHookManager->LockCursorOriginal(HackCore::GetInstance()->Surface);
 }
