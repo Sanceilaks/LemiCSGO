@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include "Netvars.h"
 #include "vector.h"
+#include "VMatrix.h"
+#include "interfaceUtils.h"
 #include "ClientClass.h"
 #define ON_GRAUND		(1 << 0)
 
@@ -99,6 +101,18 @@ public:
 	{
 		using orig_fn = int(__thiscall*)(void*);
 		return(*(orig_fn**)this)[122](this);
+	}
+
+	float GetDistance(CBaseEntity* to)
+	{
+		return this->GetOrigin().DistTo(to->GetOrigin());
+	}
+
+	float GetDistanceTest(CBaseEntity* from, CBaseEntity* to)   //DONT USE!					to meters: DistanceToEntity *= 0.0254f;
+	{
+		Math::CVector myPos = from->GetOrigin();
+		Math::CVector enPos = to->GetOrigin();
+		return sqrt((myPos.x - enPos.x) * (myPos.x - enPos.x) + (myPos.y - enPos.y) * (myPos.y - enPos.y) + (myPos.z - enPos.z) * (myPos.z - enPos.z));
 	}
 
 	NETVAR("DT_CSPlayer", "m_fFlags", flags, int);

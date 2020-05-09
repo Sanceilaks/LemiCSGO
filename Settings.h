@@ -34,8 +34,8 @@ struct EspSettings
 {
 public:
 	bool IsActive = true;
-	float BoxColor[4] = { 10, 10, 10, 130 };
-	float NameColor[4] = { 255, 0, 0, 255 };
+	float BoxColor[3] = { 10, 10, 10};
+	float NameColor[3] = { 255, 0, 0};
 };
 
 struct HackSettings

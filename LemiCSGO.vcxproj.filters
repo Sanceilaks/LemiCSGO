@@ -228,6 +228,9 @@
     <ClInclude Include="SingletonTemplate.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="LegitBot.h">
+      <Filter>Файлы заголовков\Hacks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -286,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="LockCursorHook.cpp">
       <Filter>Исходные файлы\Core\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="LegitBot.cpp">
+      <Filter>Исходные файлы\Hacks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

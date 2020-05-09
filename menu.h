@@ -25,7 +25,7 @@ namespace Menu
 			{
 				ImGui::BeginGroup();
 				ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
-				ImGui::ColorEdit4("ESPBox color", CoreSettings::Get().GetHackSettings()->ESP->BoxColor, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoOptions | ImGuiColorEditFlags_RGB | ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_NoInputs);
+				ImGui::ColorEdit3("ESPBox color", CoreSettings::Get().GetHackSettings()->ESP->BoxColor, ImGuiColorEditFlags_NoOptions | ImGuiColorEditFlags_RGB | ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_NoInputs);
 				ImGui::EndGroup();
 			};
 		};
