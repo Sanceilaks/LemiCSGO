@@ -37,10 +37,16 @@ public:
 	float BoxColor[3] = { 10, 10, 10};
 	float NameColor[3] = { 255, 0, 0};
 };
-
+struct AimSettings
+{
+public:
+	bool isActive = true;
+	
+};
 struct HackSettings
 {
 public:
+	AimSettings* AIM = new AimSettings();
 	EspSettings* ESP = new EspSettings();
 	BannyHopSet* BHOP = new BannyHopSet();
 };

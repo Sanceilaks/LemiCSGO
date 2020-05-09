@@ -9,10 +9,7 @@ bool __fastcall MyHooks::MyCreateMoveHook(void* ecx, void* edx, int FrameTime, C
 {
 	HacksF::BannyHop::Do(UCMD);
 	if (GetAsyncKeyState(VK_MENU))  //if ALT				TODO:	ADD CUSTOM AIM BUTTON  (and use it in InputSystem. Without Windows.h)
-	{
-		printf("Aimin...");
 		HacksF::LegitBot::DoAim(UCMD);
-	}
 	if (Menu::is_open)
 		UCMD->Buttons &= ~IN_ATTACK;
 	return false;

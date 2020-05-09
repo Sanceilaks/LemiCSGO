@@ -22,7 +22,7 @@ void HacksF::ESPBox::Render()
 		CSPlayer* ent = (CSPlayer*)HackCore::GetInstance()->ClientEntityList->GetEntityByIndex(i);
 		if (!ent) continue;
 
-		if (ent->isAlive() || ent == CSPlayer::GetLocalPlayer() || ent->dormant()) continue; //filter
+		if (!ent->isAlive() || ent == CSPlayer::GetLocalPlayer() || ent->dormant()) continue; //filter
 		
 		if (!(ent->GetClientClass()->class_id == class_ids::ccsplayer)) continue; //filter too (only Player and bots)
 

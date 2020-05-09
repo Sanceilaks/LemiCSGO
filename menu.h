@@ -5,6 +5,23 @@
 #include "Settings.h"
 
 #define ButtonSize ImVec2(80, 30)
+namespace BindButtons
+{
+	struct BaseKey
+	{
+		BaseKey(int c, const char* n) { this->code = c; this->name = n; };
+		int code;
+		const char* name;
+	};
+	namespace AimKey
+	{
+		struct Keys
+		{
+			BaseKey LALT = BaseKey(81, "LALT");
+		};
+	};
+};
+
 
 namespace Menu
 {
@@ -26,6 +43,7 @@ namespace Menu
 				ImGui::BeginGroup();
 				ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
 				ImGui::ColorEdit3("ESPBox color", CoreSettings::Get().GetHackSettings()->ESP->BoxColor, ImGuiColorEditFlags_NoOptions | ImGuiColorEditFlags_RGB | ImGuiColorEditFlags_Uint8 | ImGuiColorEditFlags_NoInputs);
+				ImGui::SameLine();
 				ImGui::EndGroup();
 			};
 		};
@@ -34,7 +52,11 @@ namespace Menu
 			static void Draw()
 			{
 				ImGui::BeginGroup();
-				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->AIM->isActive);
+				ImGui::Spacing();
+				ImGui::Text("AimKey");
+				ImGui::SameLine();
+				if (ImGui::Button("Aim key"))
 				ImGui::EndGroup();
 			};
 		}
@@ -52,7 +74,7 @@ namespace Menu
 			static void Draw()
 			{
 				ImGui::BeginGroup();
-				//ImGui::Checkbox("ESPBox active", &CoreSettings::Get().GetHackSettings()->ESP->IsActive);
+				ImGui::Checkbox("BHOP active", &CoreSettings::Get().GetHackSettings()->BHOP->isActive);
 				ImGui::EndGroup();
 			};
 		}
@@ -98,26 +120,20 @@ namespace Menu
 
 		ImGui::BeginChild("###tabs", ImVec2(700, 40));
 		ImGui::SameLine();
-		//ImGui::Spacing();
 
 		if (ImGui::Button("AIM", ButtonSize))		currentwin = AIM;
 		ImGui::SameLine();
-		//ImGui::Spacing();
 
 		if (ImGui::Button("VISUAL", ButtonSize))	currentwin = VISUAL;
 		ImGui::SameLine();
-		//ImGui::Spacing();
 
 		if (ImGui::Button("SKIN", ButtonSize))		currentwin = SKIN;
 		ImGui::SameLine();
-		//ImGui::Spacing();
 
 		if (ImGui::Button("MISC", ButtonSize))		currentwin = MISC;
-		//ImGui::Spacing();
 		ImGui::SameLine();
 
 		if (ImGui::Button("CONFIG", ButtonSize))	currentwin = CONFIG;
-		//ImGui::Spacing();
 		ImGui::SameLine();
 
 		ImGui::EndChild();
